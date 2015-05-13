@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import <Parse/Parse.h>
+#import "Book.h"
+#import "Chapter.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +20,18 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    // Register Parse subclasses
+    [Book registerSubclass];
+    [Chapter registerSubclass];
+    
+    [Parse setApplicationId:@"iR4Zp4DPLY38pR2gEQPaFBg07i6L1tKrxdRd9eWz"
+                  clientKey:@"t8BGlIXCk2g9hUBLHRO4YfWzQ6FSWHSXiZ7TQ5uG"];
+    
+    
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+//    [PFACL setDefaultACL:[PFACL ACL] withAccessForCurrentUser:YES];
+    
     return YES;
 }
 
